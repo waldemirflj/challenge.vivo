@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  server:
+    build: .
+    restart: always
+    command: npm start
+    network_mode: bridge
+    container_name: vivo-challenge-prod
+    ports:
+      - 3000:3000

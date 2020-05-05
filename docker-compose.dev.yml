@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo:4.2
+    restart: always
+    network_mode: bridge
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./docker/mongo/data:/data/db
+    env_file:
+      - .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+
+  server:
+    build: .
+    restart: always
+    command: npm run dev
+    network_mode: bridge
+    container_name: vivo-challenge-dev
+    depends_on:
+      - mongo
+    links:
+      - mongo
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/home/node/app
