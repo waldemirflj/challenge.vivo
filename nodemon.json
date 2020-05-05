@@ -1,0 +1,7 @@
+{
+  "ext": "js,ejs",
+  "watch": ["src"],
+  "execMap": {
+    "js": "sucrase-node"
+  }
+}
