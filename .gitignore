@@ -1,0 +1,7 @@
+docker/
+coverage/
+node_modules/
+
+**/*.pdf
+**/*.txt
+package-lock.json
